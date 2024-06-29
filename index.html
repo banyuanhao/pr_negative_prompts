@@ -47,7 +47,6 @@
 <body>
 
 
-
     <section class="hero">
       <div class="hero-body">
         <div class="container is-max-desktop">
@@ -125,6 +124,41 @@
       </div>
     </div>
   </section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <!-- Your video here -->
+        <source src="static/videos/banner_video.mp4"
+        type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The concept of negative prompts, emerging from conditional generation models like Stable Diffusion, allows users to specify what to exclude from the generated images.Despite the widespread use of negative prompts, their intrinsic mechanisms remain largely unexplored. This paper presents the first comprehensive study to uncover how and when negative prompts take effect. Our extensive empirical analysis identifies two primary behaviors of negative prompts. \textit{Delayed Effect}: The impact of negative prompts is observed after positive prompts render corresponding content. \textit{Deletion Through Neutralization}: Negative prompts delete concepts from the generated image through a mutual cancellation effect in latent space with positive prompts. These insights reveal significant potential real-world applications; for example, we demonstrate that negative prompts can facilitate object inpainting with minimal alterations to the background via a simple adaptive algorithm. We believe our findings will offer valuable insights for the community in capitalizing on the potential of negative prompts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
 
 
 <!-- Teaser video-->
