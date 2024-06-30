@@ -125,8 +125,7 @@
     </div>
   </section>
 <div style="width: 70%; margin: auto;">
-  <p> We discover the mechanisms of negative prompts in Text2Image diffusion models. 
-    Illustration on when the negative prompts attend to the "right" place. For example, we consider the face of the person as the "right place"  for the "glasses" token. Every row represents an independent diffusion process where the first and the third rows show the tokens in the \red{positive} prompt and the second and fourth rows visualize those in the \blue{negative} prompt. The \red{positive prompt(+)}, \blue{negative prompt(-)}, and the corresponding \violet{token} of the attention map are listed on top of each of the rows. Every column denotes the different diffusion steps used to visualize the cross-attention heat maps. We also enclose the feature map which attends to the "right" place for the first time, with a square box \boldsquare[red] .}
+  <p> We investigate the mechanisms of negative prompts in Text2Image diffusion models and discover that they exhibit different behaviors compared to positive prompts. In the following figure, the first and third rows display the cross-attention heat map of words in the positive prompt, while the second and fourth rows show those of the negative prompt. We observe that the negative prompt exhibits a delayed response which means they usually attend to the target position later than the positive prompt.
   </p>
 </div>
 <img src="static/images/first.png" alt="Illustration" style="display: block; margin: auto; width:50%; height:auto;margin-bottom: 5px;">
@@ -148,105 +147,19 @@
 </section>
 <!-- End paper abstract -->
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
+<div style="margin-left: 15%;margin-bottom: 10px;">
+  <p style="font-size: 24px; font-weight: bold;">When do negative prompts take effect</p>
 </div>
+
+<div style="width: 70%; margin:auto;margin-bottom: 5px;">
+  <p>
+    We define a metric called the Negative Prompt Strength (Ratio) to quantify the investigate the timing of negative prompts, which is based on the mean value of the cross-attention map. The higher the value is, the more effective the negative prompt is. The following figure shows the ratios for both adjectives and noun. 
+    For nouns, we find a peak at the 5th step for the noun-based negative prompt. Before that the target object haven't been fully formed, so the negative prompt has little effect. As we approach the peak, the negative prompt begins to assimilate layout cues from its positive counterpart, trying to remove the object. This results in the peak representing the zenith of its influence. Following this, as the element gradually disappears from the image, the impact of the negative prompt diminishes, with no remaining elements in the image to trigger the neural response.
+    For adjectives, we observe a plateau around the 10th step for adjective-based negative prompts, indicating the existence of the critical step. During the initial stages, the absence of the object leads to a subdued response, with the strength below one. Between the 5th and 10th steps, as the object becomes clear, the negative prompt accurately focuses on the intended area and maintains its influence.
+  </p>
 </div>
-</section>
-<!-- End image carousel -->
 
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
+<img src="static/images/second.png" alt="Results" style="display: block; margin: auto; width:35%; height:auto;margin-bottom: 20px;">
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
