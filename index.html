@@ -154,12 +154,16 @@
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
     We define a metric called the Negative Prompt Strength (Ratio) to quantify the investigate the timing of negative prompts, which is based on the mean value of the cross-attention map. The higher the value is, the more effective the negative prompt is. The following figure shows the ratios for both adjectives and noun. 
+  </p>
+  <p>
     For nouns, we find a peak at the 5th step for the noun-based negative prompt. Before that the target object haven't been fully formed, so the negative prompt has little effect. As we approach the peak, the negative prompt begins to assimilate layout cues from its positive counterpart, trying to remove the object. This results in the peak representing the zenith of its influence. Following this, as the element gradually disappears from the image, the impact of the negative prompt diminishes, with no remaining elements in the image to trigger the neural response.
+  </p>
+  <p>
     For adjectives, we observe a plateau around the 10th step for adjective-based negative prompts, indicating the existence of the critical step. During the initial stages, the absence of the object leads to a subdued response, with the strength below one. Between the 5th and 10th steps, as the object becomes clear, the negative prompt accurately focuses on the intended area and maintains its influence.
   </p>
 </div>
 
-<img src="static/images/second.png" alt="Results" style="display: block; margin: auto; width:35%; height:auto;margin-bottom: 20px;">
+<img src="static/images/second.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
