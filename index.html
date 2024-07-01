@@ -138,7 +138,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The concept of negative prompts, emerging from conditional generation models like Stable Diffusion, allows users to specify what to exclude from the generated images.Despite the widespread use of negative prompts, their intrinsic mechanisms remain largely unexplored. This paper presents the first comprehensive study to uncover how and when negative prompts take effect. Our extensive empirical analysis identifies two primary behaviors of negative prompts. \textit{Delayed Effect}: The impact of negative prompts is observed after positive prompts render corresponding content. \textit{Deletion Through Neutralization}: Negative prompts delete concepts from the generated image through a mutual cancellation effect in latent space with positive prompts. These insights reveal significant potential real-world applications; for example, we demonstrate that negative prompts can facilitate object inpainting with minimal alterations to the background via a simple adaptive algorithm. We believe our findings will offer valuable insights for the community in capitalizing on the potential of negative prompts.
+            The concept of negative prompts, emerging from conditional generation models like Stable Diffusion, allows users to specify what to exclude from the generated images.Despite the widespread use of negative prompts, their intrinsic mechanisms remain largely unexplored. This paper presents the first comprehensive study to uncover how and when negative prompts take effect. Our extensive empirical analysis identifies two primary behaviors of negative prompts. Delayed Effect: The impact of negative prompts is observed after positive prompts render corresponding content. Deletion Through Neutralization: Negative prompts delete concepts from the generated image through a mutual cancellation effect in latent space with positive prompts. These insights reveal significant potential real-world applications; for example, we demonstrate that negative prompts can facilitate object inpainting with minimal alterations to the background via a simple adaptive algorithm. We believe our findings will offer valuable insights for the community in capitalizing on the potential of negative prompts.
           </p>
         </div>
       </div>
@@ -156,7 +156,7 @@
     We define a metric called the Negative Prompt Strength (Ratio) to quantify the investigate the timing of negative prompts, which is based on the mean value of the cross-attention map. The higher the value is, the more effective the negative prompt is. The following figure shows the ratios for both adjectives and noun. 
   </p>
   <p>
-    For nouns, we find a peak at the 5th step for the noun-based negative prompt. Before that the target object haven't been fully formed, so the negative prompt has little effect. As we approach the peak, the negative prompt begins to assimilate layout cues from its positive counterpart, trying to remove the object. This results in the peak representing the zenith of its influence. Following this, as the element gradually disappears from the image, the impact of the negative prompt diminishes, with no remaining elements in the image to trigger the neural response.
+    For nouns, we find a peak at the 5th step for the noun-based negative prompt. Before that the target object haven't been fully formed, so the negative prompt has little effect. As we approach the peak, the negative prompt begins to assimilate layout cues from its positive counterpart, trying to remove the object. After the peak, as the element gradually disappears from the image, the impact of the negative prompt diminishes.
   </p>
   <p>
     For adjectives, we observe a plateau around the 10th step for adjective-based negative prompts, indicating the existence of the critical step. During the initial stages, the absence of the object leads to a subdued response, with the strength below one. Between the 5th and 10th steps, as the object becomes clear, the negative prompt accurately focuses on the intended area and maintains its influence.
@@ -172,11 +172,11 @@
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
-    We hypothesize that negative prompts delete objects from the generated image through a neutralization process: The negative prompts initially generate a target object at a specific location within the image, which neutralizes the positive noise through a subtractive process, effectively erasing the object. 
+    We hypothesize that the negative prompts initially generate a target object at a specific location within the image, which neutralizes the positive noise through a subtractive process, effectively erasing the object. 
   </p>
 
   <p>
-    During experiments, we find an interesting phenomenon called Reverse Effect that may be closely related to the mechanism. As shown in the figure, each column shows an image generated by applying negative prompts in some specific steps which is shown at the top of the picture. In these two examples, the diffusion process without applying a negative prompt does not produce the object mentioned in the negative prompt. But interestingly introducing a negative prompt in the early stages results in the generation of the specified object, which is marked with red bounding box.
+    During experiments, we discovered an interesting phenomenon called the Reverse Effect, which may be linked to the mechanism. As shown in the figure, each column displays an image generated by applying negative prompts at specific steps indicated at the top. In these examples, the diffusion process without a negative prompt does not produce the object mentioned in the negative prompt. However, introducing a negative prompt in the early stages results in the generation of the specified object, highlighted with a red bounding box.
   </p>
 </div>
 
@@ -197,17 +197,57 @@
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
-    To give an explanation for it 
+    To begin with, Figure (a) demonstrates that in the absence of explicit guidance, the model struggles to overcome the energy function’s barrier, influenced by the natural data distribution, leading it back to generic backgrounds. Conversely, as depicted in Figure (b), when explicit guidance is provided through the inclusion of the object in the positive prompt’s context, the model manages to surpass the barrier, with real-world distribution guidance steering it towards the object region.
   </p>
 
   <p>
-    
+    Figure (c) illustrate an
+    instance where direct negative prompts
+    are applied, yet the context is absent from
+    the positive prompt. As a result, the neg-
+    ative prompt guidance is much stronger
+    than the positive prompt guidance, mak-
+    ing this point at a considerable distance
+    in the region opposite to the object. Con-
+    sequently, the distribution guidance
+    demonstrates a substantial alignment
+    towards the object and its surrounding
+    area. Without this, a tower-like struc-
+    ture would emerge at that location. This
+    is because adding or subtracting tower-
+    like features against a uniform backdrop
+    equally contributes to the formation of a
+    tower pattern. As the distribution guid-
+    ance is encoded into the estimated noises,
+    projecting the positive noise towards the
+    background-to-object direction reveals
+    an enhanced effect in this direction, as
+    opposed to the scenario without a nega-
+    tive prompt in ig 6a. We term the phe-
+    nomenon as the "Inducing Effect", indi-
+    cating that the negative prompt triggers
+    the positive noise in a direction that repre-
+    sents the context of the negative prompt.
+  </p>
+
+  <p>
+    Finally, we can explain the Reverse Effect in figure (4). Figure~\ref{fig:how_four}\red{a} demonstrates that without the negative prompt, the implicit guidance is insufficient to generate the intended object, explaining why the object fails to appear in the first column of Figure~\ref{fig:how_constra}. Conversely, as illustrated in Figure~\ref{fig:how_four}\red{c}, the application of a negative prompt intensifies the distribution guidance towards the object, which prevents the object from materializing, clarifying the absence of the object in the last several columns of Figure~\ref{fig:how_constra}. Intriguingly, as supported by the Momentum Effect, if we remove the negative prompt after several steps, the real-world distribution guidance will maintain a large component towards the object's direction in the following steps as shown in Fig~\ref{fig:how_four}\red{d}. Such a momentum effect finally facilitates the object's emergence, as shown in the middle columns in 
   </p>
 </div>
 
 <img src="static/images/forth.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
 
+<div style="margin-left: 15%;margin-bottom: 10px;">
+  <p style="font-size: 24px; font-weight: bold;">Application: Enhanced Controllable Inpainting.</p>
+</div>
 
+<div style="width: 70%; margin:auto;margin-bottom: 5px;">
+  <p>
+    
+  </p>
+</div>
+
+<img src="static/images/sixth.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
