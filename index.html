@@ -184,7 +184,12 @@
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
-    To give an explanation for it 
+    To give an explanation for Reverse Effect, we first take a look at the energy functionn in the image generation dynamtics. The function is designed to assign lower energy levels to more ’likely’ or ’natural’ images according to the model’s training data, and higher energy levels to less likely ones. As Real-world distributions often feature elements like a clear blue sky or other uniform backgrounds, alongside distinct objects such as the Eiffel Tower, these elements typically possess low energy scores, making the model inclined to generate them. To
+    synthesize a specific object like a tower from scratch, the diffusion process necessarily traverses
+    through an intermediary phase that represents a blurry outline of the object. Given that such blurry
+    representations are atypical in the training data, they present an ’energy barrier’ that hinders the
+    seamless generation of the desired object. So the model requires the guidance of prompts to surmount
+    this barrier.
   </p>
 </div>
 
