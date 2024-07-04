@@ -194,11 +194,10 @@
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
-    To give an explanation for Reverse Effect, we look deep 
-    To begin with, Figure (a) demonstrates that in the absence of explicit guidance, the model struggles to overcome the energy function’s barrier, influenced by the natural data distribution, leading it back to generic backgrounds. Conversely, as depicted in Figure (b), when explicit guidance is provided through the inclusion of the object in the positive prompt’s context, the model manages to surpass the barrier, with real-world distribution guidance steering it towards the object region.
+    To give an explanation for Reverse Effect, we first take a look at the energy functionn in the image generation dynamtics. The function is designed to assign lower energy levels to more ’likely’ or ’natural’ images according to the model’s training data. So inorder to synthesize a specific object like a tower from scratch, the diffusion process necessarily traverses through an intermediary barrier that represents a blurry outline of the object.
   </p>
 
-  <p>
+  <!-- <p>
     Figure (c) illustrate an
     instance where direct negative prompts
     are applied, yet the context is absent from
@@ -230,10 +229,10 @@
 
   <p>
     Finally, we can explain the Reverse Effect in figure (4). Figure~\ref{fig:how_four}\red{a} demonstrates that without the negative prompt, the implicit guidance is insufficient to generate the intended object, explaining why the object fails to appear in the first column of Figure~\ref{fig:how_constra}. Conversely, as illustrated in Figure~\ref{fig:how_four}\red{c}, the application of a negative prompt intensifies the distribution guidance towards the object, which prevents the object from materializing, clarifying the absence of the object in the last several columns of Figure~\ref{fig:how_constra}. Intriguingly, as supported by the Momentum Effect, if we remove the negative prompt after several steps, the real-world distribution guidance will maintain a large component towards the object's direction in the following steps as shown in Fig~\ref{fig:how_four}\red{d}. Such a momentum effect finally facilitates the object's emergence, as shown in the middle columns in 
-  </p>
+  </p> -->
 </div>
 
-<img src="static/images/forth.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
+<img src="static/images/figure1.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
 
 <div style="margin-left: 15%;margin-bottom: 10px;">
   <p style="font-size: 24px; font-weight: bold;">Application: Enhanced Controllable Inpainting.</p>
