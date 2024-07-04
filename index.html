@@ -194,45 +194,24 @@
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
-    To give an explanation for Reverse Effect, we first take a look at the energy functionn in the image generation dynamtics. The function is designed to assign lower energy levels to more ’likely’ or ’natural’ images according to the model’s training data. So inorder to synthesize a specific object like a tower from scratch, the diffusion process necessarily traverses through an intermediary barrier that represents a blurry outline of the object.
-  </p>
-
-  <!-- <p>
-    Figure (c) illustrate an
-    instance where direct negative prompts
-    are applied, yet the context is absent from
-    the positive prompt. As a result, the neg-
-    ative prompt guidance is much stronger
-    than the positive prompt guidance, mak-
-    ing this point at a considerable distance
-    in the region opposite to the object. Con-
-    sequently, the distribution guidance
-    demonstrates a substantial alignment
-    towards the object and its surrounding
-    area. Without this, a tower-like struc-
-    ture would emerge at that location. This
-    is because adding or subtracting tower-
-    like features against a uniform backdrop
-    equally contributes to the formation of a
-    tower pattern. As the distribution guid-
-    ance is encoded into the estimated noises,
-    projecting the positive noise towards the
-    background-to-object direction reveals
-    an enhanced effect in this direction, as
-    opposed to the scenario without a nega-
-    tive prompt in ig 6a. We term the phe-
-    nomenon as the "Inducing Effect", indi-
-    cating that the negative prompt triggers
-    the positive noise in a direction that repre-
-    sents the context of the negative prompt.
+    To give an explanation for Reverse Effect, we first take a look at the energy functionn in the image generation dynamtics. The function is designed to assign lower energy levels to more ’likely’ or ’natural’ images according to the model’s training data. So in order to synthesize a specific object like a tower from scratch, the diffusion process necessarily traverses through an intermediary barrier that represents a blurry outline of the object.
   </p>
 
   <p>
-    Finally, we can explain the Reverse Effect in figure (4). Figure~\ref{fig:how_four}\red{a} demonstrates that without the negative prompt, the implicit guidance is insufficient to generate the intended object, explaining why the object fails to appear in the first column of Figure~\ref{fig:how_constra}. Conversely, as illustrated in Figure~\ref{fig:how_four}\red{c}, the application of a negative prompt intensifies the distribution guidance towards the object, which prevents the object from materializing, clarifying the absence of the object in the last several columns of Figure~\ref{fig:how_constra}. Intriguingly, as supported by the Momentum Effect, if we remove the negative prompt after several steps, the real-world distribution guidance will maintain a large component towards the object's direction in the following steps as shown in Fig~\ref{fig:how_four}\red{d}. Such a momentum effect finally facilitates the object's emergence, as shown in the middle columns in 
-  </p> -->
+    The following figure illustrate the inducing effect, that is, the negative prompt triggers the positive noise (red arrow) in a direction that represents the context of the negative prompt. The strong negative prompt (brown arrow) induces the real world distribution guidance (purple arrow) to direct at the target object region and increases its strength to have an energy.
+  </p>
 </div>
 
-<img src="static/images/figure1.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
+<div style="width: 70%; margin:auto;margin-bottom: 5px;">
+  <p>
+    The figure illustrate the Momentum Effect: the noise will preserve their direction during the diffusion process. Please refer to the paper to see the detailed experiments verifying the Momentum Effect.
+  </p>
+  <p>
+    Finally, we can explain the Reverse Effect. Without the negative prompt, the implicit guidance is insufficient to generate the intended object. The application of a negative prompt intensifies the distribution guidance towards the object, which prevents the object from materializing. If we remove the negative prompt after several steps, the real-world distribution guidance will maintain a large component towards the object's direction in the following steps. Such a momentum effect finally facilitates the object's emergence.
+  </p>
+</div>
+
+<img src="static/images/figure2.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
 
 <div style="margin-left: 15%;margin-bottom: 10px;">
   <p style="font-size: 24px; font-weight: bold;">Application: Enhanced Controllable Inpainting.</p>
