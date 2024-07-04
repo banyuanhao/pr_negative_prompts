@@ -156,10 +156,7 @@
     We define a metric called the Negative Prompt Strength (Ratio) to quantify the investigate the timing of negative prompts, which is based on the mean value of the cross-attention map. The higher the value is, the more effective the negative prompt is. The following figure shows the ratios for both adjectives and noun. 
   </p>
   <p>
-    For nouns, we find a peak at the 5th step for the noun-based negative prompt. Before that the target object haven't been fully formed, so the negative prompt has little effect. As we approach the peak, the negative prompt begins to assimilate layout cues from its positive counterpart, trying to remove the object. After the peak, as the element gradually disappears from the image, the impact of the negative prompt diminishes.
-  </p>
-  <p>
-    For adjectives, we observe a plateau around the 10th step for adjective-based negative prompts, indicating the existence of the critical step. During the initial stages, the absence of the object leads to a subdued response, with the strength below one. Between the 5th and 10th steps, as the object becomes clear, the negative prompt accurately focuses on the intended area and maintains its influence.
+    For nouns, we find a peak at the 5th step for the noun-based negative prompt. Before that the target object haven't been fully formed, while after that the object has been removed. For adjectives, we observe a plateau around the 10th step for adjective-based negative prompts. After the critical step, as the object becomes clear, the negative prompt accurately focuses on the intended area and maintains its influence.
   </p>
 </div>
 
@@ -182,7 +179,7 @@
 
 <img src="static/images/third.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
 
-<div style="width: 70%; margin:auto;margin-bottom: 5px;">
+<!-- <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
     To give an explanation for Reverse Effect, we first take a look at the energy functionn in the image generation dynamtics. The function is designed to assign lower energy levels to more ’likely’ or ’natural’ images according to the model’s training data, and higher energy levels to less likely ones. As Real-world distributions often feature elements like a clear blue sky or other uniform backgrounds, alongside distinct objects such as the Eiffel Tower, these elements typically possess low energy scores, making the model inclined to generate them. To
     synthesize a specific object like a tower from scratch, the diffusion process necessarily traverses
@@ -193,10 +190,11 @@
   </p>
 </div>
 
-<img src="static/images/fifth.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;">
+<img src="static/images/fifth.png" alt="Results" style="display: block; margin: auto; width:60%; height:auto;margin-bottom: 20px;"> -->
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
+    To give an explanation for Reverse Effect, we look deep 
     To begin with, Figure (a) demonstrates that in the absence of explicit guidance, the model struggles to overcome the energy function’s barrier, influenced by the natural data distribution, leading it back to generic backgrounds. Conversely, as depicted in Figure (b), when explicit guidance is provided through the inclusion of the object in the positive prompt’s context, the model manages to surpass the barrier, with real-world distribution guidance steering it towards the object region.
   </p>
 
@@ -243,7 +241,7 @@
 
 <div style="width: 70%; margin:auto;margin-bottom: 5px;">
   <p>
-    
+    Our findings on the critical step of using negative prompts can significantly enhance object inpainting with minimal background alteration. The key insight is to apply negative prompts after the critical step. Prior to this step, the object is not fully formed, so introducing negative prompts at this stage would only introduce noise to the original background without having a removal effect. The following figure illustrates the inpainting results achieved by our method.
   </p>
 </div>
 
